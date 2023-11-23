@@ -1,0 +1,13 @@
+{
+  "domain": "telenet",
+  "name": "Telenet",
+  "codeowners": ["XalaTheShepard"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/XalaTheShepard/telenet",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/XalaTheShepard/telenet/issues",
+  "requirements": [],
+  "version": "v0.1.0"
+}
