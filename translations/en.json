@@ -23,14 +23,6 @@
   },
   "options": {
     "step": {
-      "init": {
-        "title": "Reconfigure Telenet",
-        "data": {
-          "username": "Username",
-          "password": "Password",
-          "language": "Language"
-        }
-      },
       "language": {
         "title": "Change the language",
         "description": "This applies when the sensors are refreshed",
@@ -45,7 +37,7 @@
           "password": "Password"
         }
       },
-      "options_init": {
+      "init": {
         "title": "Change options",
         "menu_options": {
           "language": "Sensor language",

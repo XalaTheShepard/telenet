@@ -479,6 +479,11 @@ class TelenetClient:
                     100 * period_used_seconds / period_length_seconds, 1
                 )
 
+                if "wifreeUsage" in usage:
+                    wifree_usage = f"{usage.get('wifreeUsage').get('usedUnits')} {usage.get('wifreeUsage').get('unitType')}"
+                else:
+                    wifree_usage = ""
+
                 attributes = {
                     "identifier": identifier,
                     "category": category,
@@ -487,7 +492,7 @@ class TelenetClient:
                     "end_date": billcycle.get("end_date"),
                     "days_until": usage.get("daysUntil"),
                     "total_usage": f"{usage.get('totalUsage').get('units')} {usage.get('totalUsage').get('unitType')}",
-                    "wifree_usage": f"{usage.get('wifreeUsage').get('usedUnits')} {usage.get('wifreeUsage').get('unitType')}",
+                    "wifree_usage": wifree_usage,
                     "allocated_usage": f"{usage.get('allocatedUsage').get('units')} {usage.get('allocatedUsage').get('unitType')}",
                     "extended_usage": f"{usage.get('extendedUsage').get('volume')} {usage.get('extendedUsage').get('unit')}",
                     "extended_usage_price": f"{usage.get('extendedUsage').get('price')} {usage.get('extendedUsage').get('currency')}",
