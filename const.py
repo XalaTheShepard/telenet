@@ -1,6 +1,6 @@
 """Constants used by Telenet."""
-import json
 from datetime import timedelta
+import json
 from pathlib import Path
 from typing import Final
 
@@ -32,7 +32,7 @@ BASE_HEADERS = {
 MEGA = 1048576
 DATE_FORMAT = "%Y-%m-%d"
 DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%S%z"
-COORDINATOR_UPDATE_INTERVAL = timedelta(minutes=15)
+COORDINATOR_UPDATE_INTERVAL = timedelta(minutes=720)
 CONNECTION_RETRY = 5
 REQUEST_TIMEOUT = 10
 DEFAULT_LANGUAGE = "nl"
@@ -49,14 +49,12 @@ DOMAIN = manifest_data.get("domain")
 NAME = manifest_data.get("name")
 VERSION = manifest_data.get("version")
 ISSUEURL = manifest_data.get("issue_tracker")
-STARTUP = """
+STARTUP = f"""
 -------------------------------------------------------------------
-{name}
-Version: {version}
+{NAME}
+Version: {VERSION}
 This is a custom component
 If you have any issues with this you need to open an issue here:
-{issueurl}
+{ISSUEURL}
 -------------------------------------------------------------------
-""".format(
-    name=NAME, version=VERSION, issueurl=ISSUEURL
-)
+"""
