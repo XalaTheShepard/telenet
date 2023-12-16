@@ -1,35 +1,27 @@
 """Config flow to configure the Telenet integration."""
+from abc import ABC, abstractmethod
 import logging
-from abc import ABC
-from abc import abstractmethod
 from typing import Any
 
-import homeassistant.helpers.config_validation as cv
-import voluptuous as vol
-from homeassistant.config_entries import ConfigEntry
-from homeassistant.config_entries import ConfigFlow
-from homeassistant.config_entries import OptionsFlow
-from homeassistant.const import CONF_LANGUAGE
-from homeassistant.const import CONF_PASSWORD
-from homeassistant.const import CONF_USERNAME
+from homeassistant.config_entries import ConfigEntry, ConfigFlow, OptionsFlow
+from homeassistant.const import CONF_LANGUAGE, CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import callback
-from homeassistant.data_entry_flow import FlowHandler
-from homeassistant.data_entry_flow import FlowResult
-from homeassistant.helpers.selector import SelectSelector
-from homeassistant.helpers.selector import SelectSelectorConfig
-from homeassistant.helpers.selector import SelectSelectorMode
-from homeassistant.helpers.selector import TextSelector
-from homeassistant.helpers.selector import TextSelectorConfig
-from homeassistant.helpers.selector import TextSelectorType
+from homeassistant.data_entry_flow import FlowHandler, FlowResult
+import homeassistant.helpers.config_validation as cv
+from homeassistant.helpers.selector import (
+    SelectSelector,
+    SelectSelectorConfig,
+    SelectSelectorMode,
+    TextSelector,
+    TextSelectorConfig,
+    TextSelectorType,
+)
 from homeassistant.helpers.typing import UNDEFINED
+import voluptuous as vol
 
 from .client import TelenetClient
-from .const import DEFAULT_LANGUAGE
-from .const import DOMAIN
-from .const import LANGUAGE_CHOICES
-from .const import NAME
-from .exceptions import BadCredentialsException
-from .exceptions import TelenetServiceException
+from .const import DEFAULT_LANGUAGE, DOMAIN, LANGUAGE_CHOICES, NAME
+from .exceptions import BadCredentialsException, TelenetServiceException
 from .models import TelenetConfigEntryData
 
 _LOGGER = logging.getLogger(__name__)
@@ -224,7 +216,7 @@ class TelenetOptionsFlow(TelenetCommonFlow, OptionsFlow):
     ) -> FlowResult:
         """Manage Telenet options."""
         return self.async_show_menu(
-            step_id="options_init",
+            step_id="init",
             menu_options=[
                 "language",
                 "password",
